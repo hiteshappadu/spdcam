@@ -95,7 +95,7 @@ var content =   '<div class="infoWindow"><strong>'  + location.NAME + '</strong>
 + '<br/>'     + location.LOCATION
 + '</div>';
 
-if (parseInt(location.Latitude) == 0) {
+if (parseInt(location.LATITUDE) == 0) {
 geocoder.geocode( { 'address': location.LOCATION }, function(results, status) {
 if (status == google.maps.GeocoderStatus.OK) {
 
@@ -112,7 +112,7 @@ infowindow.open(map,marker);
 }
 });
 } else {
-var position = new google.maps.LatLng(parseFloat(location.Latitude), parseFloat(location.Longitude));
+var position = new google.maps.LatLng(parseFloat(location.LATITUDE), parseFloat(location.LONGITUDE));
 var marker = new google.maps.Marker({
 map: map,
 position: position,
@@ -149,10 +149,10 @@ infowindow.open(map,marker);
 		
 		<?php
 		
-		$servername = "localhost";
-		$username = "root";
-		$password = "root";
-		$dbname = "mysql";
+		$servername = "dashdb-txn-sbox-yp-lon02-02.services.eu-gb.bluemix.net";
+		$username = "zgh79455";
+		$password = "79rf3rmc+9cg8rk2";
+		$dbname = "BLUDB";
 		
 		$conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -160,7 +160,7 @@ infowindow.open(map,marker);
 		    die("Connection failed: " . $conn->connect_error);
 		}
 
-		$sql = "SELECT LOCATION, NAME, Latitude, Longitude FROM locations";
+		$sql = "SELECT LOCATION, NAME, LATITUDE, LONGITUDE FROM LOCATIONS";
 		$result = $conn->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -176,8 +176,8 @@ infowindow.open(map,marker);
 		        echo "<tr>
 					<td>" . $row["LOCATION"]. "</td>
 					<td>" . $row["NAME"]. "</td>
-					<td>" . $row["Latitude"]. "</td>
-					<td>" . $row["Longitude"]. "</td>
+					<td>" . $row["LATITUDE"]. "</td>
+					<td>" . $row["LONGITUDE"]. "</td>
 				</tr>";
 		    }
 		    echo "</table>";

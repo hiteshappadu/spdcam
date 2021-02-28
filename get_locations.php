@@ -7,7 +7,7 @@ try {
 $db = new PDO($dsn, $username, $password);
 $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
-$sth = $db->query("SELECT * FROM locations");
+$sth = $db->query("SELECT * FROM LOCATIONS");
 $locations = $sth->fetchAll();
 
 echo json_encode( $locations );
